@@ -10,12 +10,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -55,7 +58,9 @@ fun Home (){
                 real = it
             },
             label = {
-                Text (text = "Real")
+                if (real <= "100000000"){
+                    Text (text = real)
+                }
             },
             leadingIcon = {
                 Image(
@@ -66,6 +71,39 @@ fun Home (){
             maxLines = 1,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Decimal
+            ),
+            modifier = Modifier.fillMaxWidth(0.7f).padding(0.dp, 0.dp, 0.dp, 30.dp),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                cursorColor = Color(0xFF2196F3),
+                focusedLabelColor = Color(0xFF2196F3)
+            )
+        )
+
+        OutlinedTextField(
+            value = real, onValueChange = {
+                real = it
+            },
+            label = {
+                    Text (text = real)
+            },
+            leadingIcon = {
+                Image(
+                    painter = painterResource(R.drawable.bitcoin),
+                    contentDescription = "BRL",
+                    modifier = Modifier.size(32.dp))
+            },
+            maxLines = 1,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Decimal
+            ),
+            modifier = Modifier.fillMaxWidth(0.7f),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                cursorColor = Color(0xFF2196F3),
+                focusedLabelColor = Color(0xFF2196F3)
             )
         )
     }
